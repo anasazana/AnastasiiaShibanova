@@ -43,9 +43,9 @@ public class CalculatorDivTest extends AbstractCalculatorTest {
         };
     }
 
-    @Test (expectedExceptions = NumberFormatException.class)
+    @Test
     public void doubleValDivisionByZeroTest() {
-        calculator.div(2.35, 0.0);
+        Assert.assertTrue(Double.isInfinite(calculator.div(2.35, 0.0)));
     }
 
 }

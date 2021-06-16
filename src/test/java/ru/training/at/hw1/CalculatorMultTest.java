@@ -31,8 +31,8 @@ public class CalculatorMultTest extends AbstractCalculatorTest {
     @DataProvider
     public Object[][] doubleValMultiplicationDataProvider() {
         return new Object[][]{
-            {.05, 1.6, .08},
-            {-10.99, .01, -0.1099},
+            {1.5, 3.0, 4.5},
+            {-2.2, 2.0, -4.4},
             {0.0, 0.0, 0.0},
             {9.85e10, 30, 2.955e12}
         };
