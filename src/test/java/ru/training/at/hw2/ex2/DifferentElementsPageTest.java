@@ -5,7 +5,6 @@ import java.util.Optional;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -31,8 +30,8 @@ public class DifferentElementsPageTest extends AbstractSeleniumTest {
         webDriver.findElement(By.id("login-button")).click();
 
         // 4. Assert User name in the right-top side of screen that user is loggined
-        WebElement usernameLabel = new WebDriverWait(webDriver, 1)
-            .until(ExpectedConditions.visibilityOfElementLocated(By.id("user-name")));
+        WebElement usernameLabel = webDriverWait.until(ExpectedConditions
+            .visibilityOfElementLocated(By.id("user-name")));
         softAssert.assertEquals(usernameLabel.getText(), displayedUsername,
             "Displayed username should be " + displayedUsername + ".");
 
@@ -40,17 +39,15 @@ public class DifferentElementsPageTest extends AbstractSeleniumTest {
         webDriver.findElement(By
             .xpath("//ul[@class='uui-navigation nav navbar-nav m-l8']//a[@class='dropdown-toggle']"))
                  .click();
-        WebElement differentElementsPageButton = new WebDriverWait(webDriver, 3)
-            .until(ExpectedConditions
-                .visibilityOfElementLocated(By
+        WebElement differentElementsPageButton = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By
                     .xpath("//ul[@class='uui-navigation nav navbar-nav m-l8']//a[@href='different-elements.html']")));
         differentElementsPageButton.click();
         softAssert.assertEquals(webDriver.getTitle(), "Different Elements",
             "Page Title should be 'Different Elements'");
 
         // 6. Select checkboxes
-        List<WebElement> checkBoxes = new WebDriverWait(webDriver, 3)
-            .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("label[class=label-checkbox]")));
+        List<WebElement> checkBoxes = webDriverWait.until(ExpectedConditions
+            .visibilityOfAllElementsLocatedBy(By.cssSelector("label[class=label-checkbox]")));
 
         for (WebElement checkBox : checkBoxes) {
             String checkBoxLabel = checkBox.getText();
@@ -63,8 +60,8 @@ public class DifferentElementsPageTest extends AbstractSeleniumTest {
         }
 
         // 7. Select radio
-        List<WebElement> radioButtons = new WebDriverWait(webDriver, 3)
-            .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("label[class=label-radio]")));
+        List<WebElement> radioButtons = webDriverWait.until(ExpectedConditions
+                .visibilityOfAllElementsLocatedBy(By.cssSelector("label[class=label-radio]")));
 
         Optional<WebElement> selenRadioButtonOptional = radioButtons.stream()
                                                                     .filter(
@@ -82,8 +79,7 @@ public class DifferentElementsPageTest extends AbstractSeleniumTest {
         // 8. Select in dropdown
         WebElement selectColorDropdown = webDriver.findElement(By.cssSelector("select[class=uui-form-element]"));
         selectColorDropdown.click();
-        List<WebElement> colorOptions = new WebDriverWait(webDriver, 3)
-            .until(ExpectedConditions
+        List<WebElement> colorOptions = webDriverWait.until(ExpectedConditions
                 .visibilityOfAllElementsLocatedBy(By.cssSelector("select[class=uui-form-element] option")));
 
         Optional<WebElement> colorElementOptional = colorOptions.stream()
@@ -107,8 +103,7 @@ public class DifferentElementsPageTest extends AbstractSeleniumTest {
             "Wind: condition changed to true",
             "Water: condition changed to true"
         };
-        List<WebElement> actualLogs = new WebDriverWait(webDriver, 3)
-            .until(ExpectedConditions
+        List<WebElement> actualLogs = webDriverWait.until(ExpectedConditions
                 .visibilityOfAllElementsLocatedBy(By.xpath("//ul[@class='panel-body-list logs']/li")));
 
         for (int i = 0; i < actualLogs.size(); i++) {
