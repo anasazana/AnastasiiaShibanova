@@ -1,7 +1,6 @@
 package ru.training.at.hw2;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
