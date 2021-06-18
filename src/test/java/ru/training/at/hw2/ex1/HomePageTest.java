@@ -4,40 +4,17 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 import ru.training.at.hw2.AbstractSeleniumTest;
 
 public class HomePageTest extends AbstractSeleniumTest {
 
-    @Test (dataProvider = "loginDataProvider")
-    public void loggedInHomePageTest(String login, String password, String displayedUsername) {
-
-        SoftAssert softAssert = new SoftAssert();
-
-        // 1. Open test site by URL
-        webDriver.navigate().to("https://jdi-testing.github.io/jdi-light/index.html");
-
-        // 2. Assert Browser title
-        String actualTitle = webDriver.getTitle();
-        softAssert.assertEquals(actualTitle, "Home Page", "Page title should be 'Home Page'");
-
-        // 3. Perform login
-        webDriver.findElement(By.xpath("//li[@class='dropdown uui-profile-menu']/a[@class='dropdown-toggle']"))
-                 .click();
-        webDriver.findElement(By.cssSelector("input[id=name]")).sendKeys(login);
-        webDriver.findElement(By.cssSelector("input[id=password]")).sendKeys(password);
-        webDriver.findElement(By.id("login-button")).click();
-
-        // 4. Assert Username is loggined
-        WebElement element = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("user-name")));
-        softAssert.assertEquals(element.getText(), displayedUsername,
-            "Displayed username should be " + displayedUsername + ".");
+    @Test(priority = 2)
+    public void loggedInHomePageTest() {
 
         // 5. Assert that there are 4 items on the header section are displayed and they have proper texts
         List<WebElement> headerSectionElements = webDriverWait.until(ExpectedConditions
-                .visibilityOfAllElementsLocatedBy(By.xpath("//ul[@class='uui-navigation nav navbar-nav m-l8']/li/a")));
+            .visibilityOfAllElementsLocatedBy(By.xpath("//ul[@class='uui-navigation nav navbar-nav m-l8']/li/a")));
         softAssert.assertEquals(headerSectionElements.size(), 4,
             "There should be 4 elements in header section.");
 
@@ -89,7 +66,7 @@ public class HomePageTest extends AbstractSeleniumTest {
 
         // 11. Assert that there are 5 items in the Left Section are displayed and they have proper text
         List<WebElement> leftSectionElements = webDriverWait.until(ExpectedConditions
-                .visibilityOfAllElementsLocatedBy(By.xpath("//ul[@class='sidebar-menu left']/li/a/span")));
+            .visibilityOfAllElementsLocatedBy(By.xpath("//ul[@class='sidebar-menu left']/li/a/span")));
         softAssert.assertEquals(leftSectionElements.size(), 5,
             "There should be 5 items in the Left Section.");
         String[] leftSectionElementsNames = new String[] {
@@ -108,12 +85,5 @@ public class HomePageTest extends AbstractSeleniumTest {
 
         // 12. Close Browser
         // Browser is closed from inherited AbstractSeleniumTest.tearDown() method
-    }
-
-    @DataProvider
-    private Object[][] loginDataProvider() {
-        return new Object[][]{
-            {"Roman", "Jdi1234", "ROMAN IOVLEV"}
-        };
     }
 }
