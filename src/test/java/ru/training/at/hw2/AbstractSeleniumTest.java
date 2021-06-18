@@ -24,8 +24,7 @@ public abstract class AbstractSeleniumTest {
         WebDriverManager.chromedriver().setup();
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-        webDriverWait = new WebDriverWait(webDriver, 3);
+        webDriverWait = new WebDriverWait(webDriver, 1);
         softAssert = new SoftAssert();
     }
 
