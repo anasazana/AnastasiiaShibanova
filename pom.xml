@@ -66,8 +66,6 @@
       <version>${assertj-core.version}</version>
       <scope>test</scope>
     </dependency>
-
-
   </dependencies>
 
   <build>
@@ -120,7 +118,23 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>${maven-surefire-plugin.version}</version>
             <configuration>
-              <suiteXmlFiles>${project.basedir}/src/test/resources/testngConfigs/seleniumTestSuite.xml</suiteXmlFiles>
+              <suiteXmlFiles>${project.basedir}/src/test/resources/testngConfigs/hw2.xml</suiteXmlFiles>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>hw3</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>${maven-surefire-plugin.version}</version>
+            <configuration>
+              <suiteXmlFiles>${project.basedir}/src/test/resources/testngConfigs/hw3.xml</suiteXmlFiles>
             </configuration>
           </plugin>
         </plugins>
