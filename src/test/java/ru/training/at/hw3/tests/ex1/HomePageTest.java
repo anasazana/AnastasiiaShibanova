@@ -1,27 +1,27 @@
-package ru.training.at.hw3.ex1;
+package ru.training.at.hw3.tests.ex1;
 
 import org.testng.annotations.Test;
-import ru.training.at.hw3.AbstractSeleniumRefactoredTest;
-import ru.training.at.hw3.utils.ExpectedValues;
-import ru.training.at.hw3.pageObjects.HeaderSectionMenu;
-import ru.training.at.hw3.pageObjects.LeftSideSectionMenu;
+import ru.training.at.hw3.data.ExpectedValues;
+import ru.training.at.hw3.pages.components.HeaderSectionMenu;
+import ru.training.at.hw3.pages.components.LeftSideSectionMenu;
+import ru.training.at.hw3.tests.AbstractSeleniumTest;
 
-public class HomePageRefactoredTest extends AbstractSeleniumRefactoredTest {
+public class HomePageTest extends AbstractSeleniumTest {
 
     // 5. Assert that there are 4 items on the header section are displayed and they have proper texts
     @Test(priority = 3)
     public void headerSectionItemsAreDisplayedAndHaveProperTexts() {
         HeaderSectionMenu headerSection = homePage.getHeaderSectionMenu();
         headerSection.getHeaderSectionMenuItems()
-                     .forEach(element -> assertCollector.assertTrue(element.isDisplayed(),
-                         "All header section elements should be displayed."));
+            .forEach(element -> assertCollector.assertTrue(element.isDisplayed(),
+                "All header section elements should be displayed."));
 
         int expectedNumberOfElements = ExpectedValues.NUMBER_OF_HEADER_SECTION_ELEMENTS;
         assertCollector.assertEquals(headerSection.getNumberOfHeaderSectionMenuItems(), expectedNumberOfElements,
             "Actual number of header section elements differs from expected.");
 
         assertCollector.assertTrue(headerSection.getNamesOfHeaderSectionMenuItems()
-                                                .equals(ExpectedValues.HEADER_SECTION_ELEMENTS_NAMES),
+            .equals(ExpectedValues.HEADER_SECTION_ELEMENTS_NAMES),
             "Header section elements should have proper names.");
     }
 
@@ -66,15 +66,15 @@ public class HomePageRefactoredTest extends AbstractSeleniumRefactoredTest {
         webDriver.switchTo().defaultContent();
         LeftSideSectionMenu leftSideSection = homePage.getLeftSideSectionMenu();
         leftSideSection.getLeftSectionMenuItems()
-                       .forEach(element -> assertCollector.assertTrue(element.isDisplayed(),
-                           "All left side section elements should be displayed."));
+            .forEach(element -> assertCollector.assertTrue(element.isDisplayed(),
+                "All left side section elements should be displayed."));
 
         int expectedNumberOfElements = ExpectedValues.NUMBER_OF_LEFT_SECTION_ELEMENTS;
         assertCollector.assertEquals(leftSideSection.getNumberOfLeftSectionElements(), expectedNumberOfElements,
             "Actual number of left side section elements differs from expected.");
 
         assertCollector.assertTrue(leftSideSection.getNamesOfLeftSectionElements()
-                                                  .equals(ExpectedValues.LEFT_SECTION_ELEMENTS_NAMES),
+             .equals(ExpectedValues.LEFT_SECTION_ELEMENTS_NAMES),
             "Left side section elements should have proper names.");
     }
 

@@ -1,4 +1,4 @@
-package ru.training.at.hw3;
+package ru.training.at.hw3.tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.io.FileInputStream;
@@ -10,10 +10,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import ru.training.at.hw3.utils.ExpectedValues;
-import ru.training.at.hw3.pageObjects.HomePage;
+import ru.training.at.hw3.data.ExpectedValues;
+import ru.training.at.hw3.pages.HomePage;
 
-public abstract class AbstractSeleniumRefactoredTest {
+public abstract class AbstractSeleniumTest {
 
     protected WebDriver webDriver;
     protected SoftAssert assertCollector;

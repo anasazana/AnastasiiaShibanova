@@ -1,4 +1,4 @@
-package ru.training.at.hw3.pageObjects;
+package ru.training.at.hw3.pages;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import ru.training.at.hw3.pages.components.HeaderSectionMenu;
+import ru.training.at.hw3.pages.components.LeftSideSectionMenu;
 
 public class HomePage {
 
@@ -104,8 +106,8 @@ public class HomePage {
 
     public List<String> getHomePageTextsValues() {
         return homePageTexts.stream()
-                            .map(WebElement::getText)
-                            .collect(Collectors.toList());
+            .map(WebElement::getText)
+            .collect(Collectors.toList());
     }
 
 

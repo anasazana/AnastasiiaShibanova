@@ -1,4 +1,4 @@
-package ru.training.at.hw3.utils;
+package ru.training.at.hw3.data;
 
 import java.util.Arrays;
 import java.util.List;

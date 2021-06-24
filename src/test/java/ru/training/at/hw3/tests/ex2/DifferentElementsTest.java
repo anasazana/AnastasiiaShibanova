@@ -1,17 +1,18 @@
-package ru.training.at.hw3.ex2;
+package ru.training.at.hw3.tests.ex2;
 
 import java.util.List;
 import java.util.Set;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import ru.training.at.hw3.AbstractSeleniumRefactoredTest;
+import ru.training.at.hw3.data.ExpectedValues;
+import ru.training.at.hw3.pages.DifferentElementsPage;
+import ru.training.at.hw3.pages.components.HeaderSectionMenu;
+import ru.training.at.hw3.tests.AbstractSeleniumTest;
 import ru.training.at.hw3.utils.DifferentElementsLogCreator;
-import ru.training.at.hw3.pageObjects.DifferentElementsPage;
-import ru.training.at.hw3.utils.ExpectedValues;
-import ru.training.at.hw3.pageObjects.HeaderSectionMenu;
 
-public class DifferentElementsRefactoredTest extends AbstractSeleniumRefactoredTest {
+
+public class DifferentElementsTest extends AbstractSeleniumTest {
 
     private DifferentElementsPage differentElementsPage;
     private final DifferentElementsLogCreator expectedLogsAccumulator = new DifferentElementsLogCreator();

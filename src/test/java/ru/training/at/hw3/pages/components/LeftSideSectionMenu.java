@@ -1,4 +1,4 @@
-package ru.training.at.hw3.pageObjects;
+package ru.training.at.hw3.pages.components;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,8 +26,8 @@ public class LeftSideSectionMenu {
 
     public List<String> getNamesOfLeftSectionElements() {
         return leftSectionMenuItems.stream()
-                                   .map(WebElement::getText)
-                                   .collect(Collectors.toList());
+            .map(WebElement::getText)
+            .collect(Collectors.toList());
     }
 
     public void clickOnLeftSectionMenuItem(String menuItemName) {

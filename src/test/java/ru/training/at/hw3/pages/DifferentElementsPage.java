@@ -1,4 +1,4 @@
-package ru.training.at.hw3.pageObjects;
+package ru.training.at.hw3.pages;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,6 +7,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import ru.training.at.hw3.pages.components.HeaderSectionMenu;
+import ru.training.at.hw3.pages.components.LeftSideSectionMenu;
+import ru.training.at.hw3.pages.components.RightSideSectionMenu;
 
 public class DifferentElementsPage {
 
@@ -53,9 +56,8 @@ public class DifferentElementsPage {
 
     public WebElement selectElement(String element) {
         Optional<WebElement> selectedElementOptional = elementCheckBoxes.stream()
-                                                                        .filter(checkBox -> checkBox.getText()
-                                                                                                    .contains(element))
-                                                                        .findFirst();
+            .filter(checkBox -> checkBox.getText().contains(element))
+            .findFirst();
         if (selectedElementOptional.isPresent()) {
             WebElement selectedElement = selectedElementOptional.get();
             selectedElement.click();
@@ -75,9 +77,8 @@ public class DifferentElementsPage {
 
     public WebElement selectMetal(String metal) {
         Optional<WebElement> selectedMetalOptional = metalRadioButtons.stream()
-                                                                      .filter(button -> button.getText()
-                                                                                              .contains(metal))
-                                                                      .findFirst();
+            .filter(button -> button.getText().contains(metal))
+            .findFirst();
         if (selectedMetalOptional.isPresent()) {
             WebElement selectedMetal = selectedMetalOptional.get();
             selectedMetal.click();
@@ -101,9 +102,8 @@ public class DifferentElementsPage {
 
     public WebElement selectColor(String color) {
         Optional<WebElement> selectedColorOptional = colorOptions.stream()
-                                                                 .filter(checkBox -> checkBox.getText()
-                                                                                             .contains(color))
-                                                                 .findFirst();
+            .filter(checkBox -> checkBox.getText().contains(color))
+            .findFirst();
         if (selectedColorOptional.isPresent()) {
             WebElement selectedColor = selectedColorOptional.get();
             selectedColor.click();

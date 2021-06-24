@@ -1,4 +1,4 @@
-package ru.training.at.hw3.pageObjects;
+package ru.training.at.hw3.pages.components;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,8 +18,8 @@ public class RightSideSectionMenu {
 
     public List<String> getLogs() {
         return logs.stream()
-                   .map(WebElement::getText)
-                   .collect(Collectors.toList());
+            .map(WebElement::getText)
+            .collect(Collectors.toList());
     }
 
 }

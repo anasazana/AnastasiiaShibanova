@@ -3,8 +3,8 @@
 <suite name="SeleniumRefactoredSuite">
   <test name="SeleniumTests">
     <classes>
-      <class name="ru.training.at.hw3.ex1.HomePageRefactoredTest"/>
-      <class name="ru.training.at.hw3.ex2.DifferentElementsRefactoredTest"/>
+      <class name="ru.training.at.hw3.tests.ex1.HomePageTest"/>
+      <class name="ru.training.at.hw3.tests.ex2.DifferentElementsTest"/>
     </classes>
   </test>
 </suite>
