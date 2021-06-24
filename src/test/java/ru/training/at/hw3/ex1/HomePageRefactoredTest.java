@@ -3,8 +3,8 @@ package ru.training.at.hw3.ex1;
 import org.testng.annotations.Test;
 import ru.training.at.hw3.AbstractSeleniumRefactoredTest;
 import ru.training.at.hw3.utils.ExpectedValues;
-import ru.training.at.hw3.utils.HeaderSectionMenu;
-import ru.training.at.hw3.utils.LeftSideSectionMenu;
+import ru.training.at.hw3.pageObjects.HeaderSectionMenu;
+import ru.training.at.hw3.pageObjects.LeftSideSectionMenu;
 
 public class HomePageRefactoredTest extends AbstractSeleniumRefactoredTest {
 

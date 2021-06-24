@@ -7,9 +7,9 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.training.at.hw3.AbstractSeleniumRefactoredTest;
 import ru.training.at.hw3.utils.DifferentElementsLogCreator;
-import ru.training.at.hw3.utils.DifferentElementsPage;
+import ru.training.at.hw3.pageObjects.DifferentElementsPage;
 import ru.training.at.hw3.utils.ExpectedValues;
-import ru.training.at.hw3.utils.HeaderSectionMenu;
+import ru.training.at.hw3.pageObjects.HeaderSectionMenu;
 
 public class DifferentElementsRefactoredTest extends AbstractSeleniumRefactoredTest {
 

@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import ru.training.at.hw3.utils.ExpectedValues;
-import ru.training.at.hw3.utils.HomePage;
+import ru.training.at.hw3.pageObjects.HomePage;
 
 public abstract class AbstractSeleniumRefactoredTest {
 

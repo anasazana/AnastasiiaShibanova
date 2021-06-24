@@ -1,4 +1,4 @@
-package ru.training.at.hw3.utils;
+package ru.training.at.hw3.pageObjects;
 
 import java.util.List;
 import java.util.stream.Collectors;
