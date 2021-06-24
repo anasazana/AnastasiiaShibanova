@@ -23,6 +23,8 @@
     <testng.version>7.4.0</testng.version>
     <assertj-core.version>3.20.1</assertj-core.version>
     <calculator.version>1.0</calculator.version>
+    <allure-testng.version>2.14.0</allure-testng.version>
+    <allure-maven.version>2.9</allure-maven.version>
   </properties>
 
   <dependencies>
@@ -66,12 +68,21 @@
       <version>${assertj-core.version}</version>
       <scope>test</scope>
     </dependency>
-
-
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-testng</artifactId>
+      <version>${allure-testng.version}</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>${allure-maven.version}</version>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
