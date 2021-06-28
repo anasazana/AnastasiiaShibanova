@@ -5,7 +5,7 @@
     <classes>
       <class name="ru.training.at.hw4.tests.passing.ex1.HomePageTest"/>
       <class name="ru.training.at.hw4.tests.passing.ex2.DifferentElementsTest"/>
-      <class name="ru.training.at.hw4.tests.failing.DifferentElementsTest"/>
+<!--      <class name="ru.training.at.hw4.tests.failing.DifferentElementsTest"/>-->
     </classes>
   </test>
 </suite>
