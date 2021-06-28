@@ -9,8 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+import ru.training.at.hw3.data.ExpectedValues;
 import ru.training.at.hw4.steps.ActionStep;
 import ru.training.at.hw4.steps.AssertionStep;
 
@@ -21,13 +21,10 @@ public abstract class AbstractSeleniumTest {
     protected ActionStep actionStep;
     protected AssertionStep assertionStep;
 
-    @BeforeSuite
-    protected void setUpSuite() {
-        WebDriverManager.chromedriver().setup();
-    }
 
     @BeforeClass
     protected void setUp(ITestContext testContext) {
+        WebDriverManager.chromedriver().setup();
         webDriver.set(new ChromeDriver());
         testContext.setAttribute("driver", webDriver.get());
         webDriver.get().manage().window().maximize();
@@ -49,7 +46,7 @@ public abstract class AbstractSeleniumTest {
         // 1. Open test site by URL
         actionStep.openHomePage();
         // 2. Assert Browser title
-        assertionStep.checkHomePageTitleEqualsExpected();
+        assertionStep.checkHomePageTitleEqualsExpected(ExpectedValues.HOME_PAGE_TITLE);
     }
 
     @Test(priority = 2,
@@ -63,6 +60,8 @@ public abstract class AbstractSeleniumTest {
 
     @AfterClass
     protected void tearDown() {
-        webDriver.get().quit();
+        if (webDriver.get() != null) {
+            webDriver.get().quit();
+        }
     }
 }

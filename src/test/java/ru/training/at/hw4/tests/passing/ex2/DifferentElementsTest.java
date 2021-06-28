@@ -3,12 +3,14 @@ package ru.training.at.hw4.tests.passing.ex2;
 
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import java.util.NoSuchElementException;
 import java.util.Set;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.training.at.hw4.data.ExpectedValues;
 import ru.training.at.hw4.tests.AbstractSeleniumTest;
 import ru.training.at.hw4.utils.DifferentElementsLogCreator;
+import sun.jvm.hotspot.utilities.AssertionFailure;
 
 @Feature("Different Elements Page contents check")
 @Story("Choose different elements")
@@ -20,7 +22,7 @@ public class DifferentElementsTest extends AbstractSeleniumTest {
     @Test(priority = 3, description = "Open through the Home Page header menu Service -> Different Elements Page")
     public void openServiceDifferentElementsPageThroughHeaderMenuAndCheckIfItHasProperTitle() {
         actionStep.clickOnHeaderSectionServiceMenuItem(ExpectedValues.SERVICE_MENU_DIFFERENT_ELEMENTS_BUTTON_VALUE);
-        assertionStep.differentElementsPageHasProperTitle();
+        assertionStep.differentElementsPageHasProperTitle(ExpectedValues.DIFFERENT_ELEMENTS_PAGE_TITLE);
     }
 
     // 6. Select checkboxes
@@ -43,7 +45,7 @@ public class DifferentElementsTest extends AbstractSeleniumTest {
 
     // 8. Select in dropdown
     @Test(priority = 6, dataProvider = "selectedDropdownMenuItemData",
-          description = "Select invalid color on Different Elements Page")
+          description = "Select valid color on Different Elements Page")
     public void selectColorDropdownMenuItem(String colorToSelect) {
         actionStep.openColorDropdownMenuOnDifferentElementsPage();
         actionStep.selectColorOnDifferentElementsPage(colorToSelect);

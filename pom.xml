@@ -26,6 +26,7 @@
     <allure-testng.version>2.14.0</allure-testng.version>
     <allure-maven.version>2.10.0</allure-maven.version>
     <aspectj.version>1.9.6</aspectj.version>
+    <allure-commandline.version>2.14.0</allure-commandline.version>
   </properties>
 
   <dependencies>
@@ -75,6 +76,13 @@
       <version>${assertj-core.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-commandline</artifactId>
+      <version>${allure-commandline.version}</version>
+      <type>pom</type>
+    </dependency>
+
   </dependencies>
 
   <build>

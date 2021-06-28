@@ -1,8 +1,8 @@
 package ru.training.at.hw4.tests.failing;
 
-
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import java.util.NoSuchElementException;
 import java.util.Set;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -20,13 +20,14 @@ public class DifferentElementsFailTest extends AbstractSeleniumTest {
     @Test(priority = 3, description = "Open through the Home Page header menu Service -> Different Elements Page")
     public void openServiceDifferentElementsPageThroughHeaderMenuAndCheckIfItHasProperTitle() {
         actionStep.clickOnHeaderSectionServiceMenuItem(ExpectedValues.SERVICE_MENU_DIFFERENT_ELEMENTS_BUTTON_VALUE);
-        assertionStep.differentElementsPageHasProperTitle();
+        assertionStep
+            .differentElementsPageHasProperTitle(ExpectedValues.DIFFERENT_ELEMENTS_PAGE_TITLE);
     }
 
     // 6. Select checkboxes
     @Test(priority = 4, dataProvider = "selectedCheckBoxesData",
           description = "Select valid elements on Different Elements Page")
-    public void selectElementCheckBoxes(String ... elementsToSelect) {
+    public void selectElementCheckBoxes(String... elementsToSelect) {
         actionStep.selectCheckBoxesOnDifferentElementsPage(elementsToSelect);
         for (String elementName : elementsToSelect) {
             expectedLogsAccumulator.addCheckBoxLog(elementName, true);
@@ -48,6 +49,7 @@ public class DifferentElementsFailTest extends AbstractSeleniumTest {
         actionStep.openColorDropdownMenuOnDifferentElementsPage();
         actionStep.selectColorOnDifferentElementsPage(colorToSelect);
         expectedLogsAccumulator.addDropdownItemLog(colorToSelect);
+
     }
 
     // 9. Assert that
@@ -62,21 +64,21 @@ public class DifferentElementsFailTest extends AbstractSeleniumTest {
 
     @DataProvider
     public Object[][] selectedCheckBoxesData() {
-        return new Object[][]{
+        return new Object[][] {
             {"Wind", "Water"}
         };
     }
 
     @DataProvider
     public Object[][] selectedRadioButtonInvalidData() {
-        return new Object[][]{
+        return new Object[][] {
             {"Aluminum"}
         };
     }
 
     @DataProvider
     public Object[][] selectedDropdownMenuItemInvalidData() {
-        return new Object[][]{
+        return new Object[][] {
             {"Purple"}
         };
     }
