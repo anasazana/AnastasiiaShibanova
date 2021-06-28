@@ -121,7 +121,7 @@
         <configuration>
           <parallel>classes</parallel>
           <threadCount>3</threadCount>
-          <suiteXmlFiles>${project.basedir}/src/test/resources/testngConfigs/sumSubTests.xml</suiteXmlFiles>
+          <suiteXmlFiles>${project.basedir}/src/test/resources/testngConfigs/hw4.xml</suiteXmlFiles>
           <argLine>
             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
           </argLine>
