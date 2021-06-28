@@ -1,8 +1,10 @@
 package ru.training.at.hw4.tests.passing.ex1;
 
+import io.qameta.allure.Feature;
 import org.testng.annotations.Test;
 import ru.training.at.hw4.tests.AbstractSeleniumTest;
 
+@Feature("Home Page contents check")
 public class HomePageTest extends AbstractSeleniumTest {
 
     // 5. Assert that there are 4 items on the header section are displayed and they have proper texts

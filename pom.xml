@@ -24,7 +24,7 @@
     <assertj-core.version>3.20.1</assertj-core.version>
     <calculator.version>1.0</calculator.version>
     <allure-testng.version>2.14.0</allure-testng.version>
-    <allure-maven.version>2.9</allure-maven.version>
+    <allure-maven.version>2.10.0</allure-maven.version>
     <aspectj.version>1.9.6</aspectj.version>
   </properties>
 
@@ -80,11 +80,6 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>io.qameta.allure</groupId>
-        <artifactId>allure-maven</artifactId>
-        <version>${allure-maven.version}</version>
-      </plugin>
-      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <version>${maven-checkstyle-plugin.version}</version>
@@ -131,6 +126,15 @@
           </dependency>
         </dependencies>
       </plugin>
+      <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>${allure-maven.version}</version>
+        <configuration>
+          <propertiesFilePath>${project.basedir}/test/resources/allure.properties</propertiesFilePath>
+          <outputDirectory>${project.basedir}/target/allure-results</outputDirectory>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
@@ -171,6 +175,24 @@
       <id>hw4</id>
       <build>
         <plugins>
+          <plugin>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-maven</artifactId>
+            <version>${allure-maven.version}</version>
+            <configuration>
+              <propertiesFilePath>${project.basedir}/test/resources/allure.properties</propertiesFilePath>
+            </configuration>
+          </plugin>
+<!--          <plugin>-->
+<!--            <groupId>io.qameta.allure</groupId>-->
+<!--            <artifactId>allure-maven</artifactId>-->
+<!--            <version>${allure-maven.version}</version>-->
+
+<!--            <configuration>-->
+<!--              <reportVersion>${allure-testng.version}</reportVersion>-->
+<!--              <outputDirectory>${basedir}/target/allure-reports/</outputDirectory>-->
+<!--            </configuration>-->
+<!--          </plugin>-->
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
@@ -239,8 +261,10 @@
         <groupId>io.qameta.allure</groupId>
         <artifactId>allure-maven</artifactId>
         <version>${allure-maven.version}</version>
+
         <configuration>
           <reportVersion>${allure-testng.version}</reportVersion>
+          <outputDirectory>${project.basedir}/target/allure-reports</outputDirectory>
         </configuration>
       </plugin>
     </plugins>

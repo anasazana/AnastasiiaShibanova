@@ -1,6 +1,8 @@
 package ru.training.at.hw4.tests.failing;
 
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import java.util.Set;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -8,7 +10,9 @@ import ru.training.at.hw4.data.ExpectedValues;
 import ru.training.at.hw4.tests.AbstractSeleniumTest;
 import ru.training.at.hw4.utils.DifferentElementsLogCreator;
 
-public class DifferentElementsTest extends AbstractSeleniumTest {
+@Feature("Different Elements Page contents check")
+@Story("Different Elements Page does not contain incorrect elements")
+public class DifferentElementsFailTest extends AbstractSeleniumTest {
 
     private final DifferentElementsLogCreator expectedLogsAccumulator = new DifferentElementsLogCreator();
 
