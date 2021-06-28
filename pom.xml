@@ -111,8 +111,6 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${maven-surefire-plugin.version}</version>
         <configuration>
-          <parallel>classes</parallel>
-          <threadCount>3</threadCount>
           <suiteXmlFiles>${project.basedir}/src/test/resources/testngConfigs/sumSubTests.xml</suiteXmlFiles>
           <argLine>
             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"

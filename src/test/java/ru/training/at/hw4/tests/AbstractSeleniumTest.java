@@ -36,7 +36,6 @@ public abstract class AbstractSeleniumTest {
             String projectPath = System.getProperty("user.dir");
             properties.load(new FileInputStream(projectPath + "/src/test/resources/config.properties"));
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
