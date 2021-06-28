@@ -26,7 +26,6 @@
     <allure-testng.version>2.14.0</allure-testng.version>
     <allure-maven.version>2.10.0</allure-maven.version>
     <aspectj.version>1.9.6</aspectj.version>
-    <allure-commandline.version>2.14.0</allure-commandline.version>
   </properties>
 
   <dependencies>
@@ -76,13 +75,6 @@
       <version>${assertj-core.version}</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>io.qameta.allure</groupId>
-      <artifactId>allure-commandline</artifactId>
-      <version>${allure-commandline.version}</version>
-      <type>pom</type>
-    </dependency>
-
   </dependencies>
 
   <build>
@@ -121,7 +113,7 @@
         <configuration>
           <parallel>classes</parallel>
           <threadCount>3</threadCount>
-          <suiteXmlFiles>${project.basedir}/src/test/resources/testngConfigs/hw4.xml</suiteXmlFiles>
+          <suiteXmlFiles>${project.basedir}/src/test/resources/testngConfigs/sumSubTests.xml</suiteXmlFiles>
           <argLine>
             -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
           </argLine>
@@ -191,16 +183,6 @@
               <propertiesFilePath>${project.basedir}/test/resources/allure.properties</propertiesFilePath>
             </configuration>
           </plugin>
-<!--          <plugin>-->
-<!--            <groupId>io.qameta.allure</groupId>-->
-<!--            <artifactId>allure-maven</artifactId>-->
-<!--            <version>${allure-maven.version}</version>-->
-
-<!--            <configuration>-->
-<!--              <reportVersion>${allure-testng.version}</reportVersion>-->
-<!--              <outputDirectory>${basedir}/target/allure-reports/</outputDirectory>-->
-<!--            </configuration>-->
-<!--          </plugin>-->
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
