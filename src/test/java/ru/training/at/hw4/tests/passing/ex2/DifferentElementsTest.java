@@ -17,14 +17,15 @@ public class DifferentElementsTest extends AbstractSeleniumTest {
     private final DifferentElementsLogCreator expectedLogsAccumulator = new DifferentElementsLogCreator();
 
     // 5. Open through the header menu Service -> Different Elements Page
-    @Test(priority = 3)
+    @Test(priority = 3, description = "Open through the Home Page header menu Service -> Different Elements Page")
     public void openServiceDifferentElementsPageThroughHeaderMenuAndCheckIfItHasProperTitle() {
         actionStep.clickOnHeaderSectionServiceMenuItem(ExpectedValues.SERVICE_MENU_DIFFERENT_ELEMENTS_BUTTON_VALUE);
         assertionStep.differentElementsPageHasProperTitle();
     }
 
     // 6. Select checkboxes
-    @Test(priority = 4, dataProvider = "selectedCheckBoxesData")
+    @Test(priority = 4, dataProvider = "selectedCheckBoxesData",
+          description = "Select valid elements on Different Elements Page")
     public void selectElementCheckBoxes(String ... elementsToSelect) {
         actionStep.selectCheckBoxesOnDifferentElementsPage(elementsToSelect);
         for (String elementName : elementsToSelect) {
@@ -33,14 +34,16 @@ public class DifferentElementsTest extends AbstractSeleniumTest {
     }
 
     // 7. Select radio
-    @Test(priority = 5, dataProvider = "selectedRadioButtonData")
+    @Test(priority = 5, dataProvider = "selectedRadioButtonData",
+          description = "Select valid metal on Different Elements Page")
     public void selectMetalRadioButton(String metalToSelect) {
         actionStep.selectMetalRadioButtonOnDifferentElementsPage(metalToSelect);
         expectedLogsAccumulator.addRadioButtonLog(metalToSelect);
     }
 
     // 8. Select in dropdown
-    @Test(priority = 6, dataProvider = "selectedDropdownMenuItemData")
+    @Test(priority = 6, dataProvider = "selectedDropdownMenuItemData",
+          description = "Select invalid color on Different Elements Page")
     public void selectColorDropdownMenuItem(String colorToSelect) {
         actionStep.openColorDropdownMenuOnDifferentElementsPage();
         actionStep.selectColorOnDifferentElementsPage(colorToSelect);
@@ -51,7 +54,7 @@ public class DifferentElementsTest extends AbstractSeleniumTest {
     // - for each checkbox there is an individual log row and value is corresponded to the status of checkbox
     // - for radio button there is a log row and value is corresponded to the status of radio button
     // - for dropdown there is a log row and value is corresponded to the selected value.
-    @Test(priority = 7)
+    @Test(priority = 7, description = "Check that Different Elements Page contains proper logs")
     public void assertLogsEqualExpected() {
         Set<String> expectedLogs = expectedLogsAccumulator.getLogs();
         assertionStep.logsOnDifferentElementsPageEqualExpected(expectedLogs);

@@ -11,7 +11,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
-import ru.training.at.hw4.listeners.AllureListener;
 import ru.training.at.hw4.steps.ActionStep;
 import ru.training.at.hw4.steps.AssertionStep;
 
@@ -45,7 +44,7 @@ public abstract class AbstractSeleniumTest {
         }
     }
 
-    @Test(priority = 1)
+    @Test(priority = 1, description = "Open Home Page and check that it has proper title")
     protected void homePageHasProperTitle() {
         // 1. Open test site by URL
         actionStep.openHomePage();
@@ -53,7 +52,8 @@ public abstract class AbstractSeleniumTest {
         assertionStep.checkHomePageTitleEqualsExpected();
     }
 
-    @Test(priority = 2)
+    @Test(priority = 2,
+          description = "Log in with valid user data and check that username label on Home Page contains proper name")
     protected void afterLoginProperUsernameIsDisplayed() {
         // 3. Perform login
         actionStep.loginWithExistingUserData(properties.getProperty("username"), properties.getProperty("password"));

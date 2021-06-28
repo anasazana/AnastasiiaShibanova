@@ -17,14 +17,15 @@ public class DifferentElementsFailTest extends AbstractSeleniumTest {
     private final DifferentElementsLogCreator expectedLogsAccumulator = new DifferentElementsLogCreator();
 
     // 5. Open through the header menu Service -> Different Elements Page
-    @Test(priority = 3)
+    @Test(priority = 3, description = "Open through the Home Page header menu Service -> Different Elements Page")
     public void openServiceDifferentElementsPageThroughHeaderMenuAndCheckIfItHasProperTitle() {
         actionStep.clickOnHeaderSectionServiceMenuItem(ExpectedValues.SERVICE_MENU_DIFFERENT_ELEMENTS_BUTTON_VALUE);
         assertionStep.differentElementsPageHasProperTitle();
     }
 
     // 6. Select checkboxes
-    @Test(priority = 4, dataProvider = "selectedCheckBoxesData")
+    @Test(priority = 4, dataProvider = "selectedCheckBoxesData",
+          description = "Select valid elements on Different Elements Page")
     public void selectElementCheckBoxes(String ... elementsToSelect) {
         actionStep.selectCheckBoxesOnDifferentElementsPage(elementsToSelect);
         for (String elementName : elementsToSelect) {
@@ -33,15 +34,17 @@ public class DifferentElementsFailTest extends AbstractSeleniumTest {
     }
 
     // 7. Select radio
-    @Test(priority = 5, dataProvider = "selectedRadioButtonData")
-    public void selectMetalRadioButton(String metalToSelect) {
+    @Test(priority = 5, dataProvider = "selectedRadioButtonInvalidData",
+          description = "Select invalid metal on Different Elements Page")
+    public void selectInvalidMetalRadioButton(String metalToSelect) {
         actionStep.selectMetalRadioButtonOnDifferentElementsPage(metalToSelect);
         expectedLogsAccumulator.addRadioButtonLog(metalToSelect);
     }
 
     // 8. Select in dropdown
-    @Test(priority = 6, dataProvider = "selectedDropdownMenuItemData")
-    public void selectColorDropdownMenuItem(String colorToSelect) {
+    @Test(priority = 6, dataProvider = "selectedDropdownMenuItemInvalidData",
+          description = "Select invalid color on Different Elements Page")
+    public void selectInvalidColorDropdownMenuItem(String colorToSelect) {
         actionStep.openColorDropdownMenuOnDifferentElementsPage();
         actionStep.selectColorOnDifferentElementsPage(colorToSelect);
         expectedLogsAccumulator.addDropdownItemLog(colorToSelect);
@@ -51,7 +54,7 @@ public class DifferentElementsFailTest extends AbstractSeleniumTest {
     // - for each checkbox there is an individual log row and value is corresponded to the status of checkbox
     // - for radio button there is a log row and value is corresponded to the status of radio button
     // - for dropdown there is a log row and value is corresponded to the selected value.
-    @Test(priority = 7)
+    @Test(priority = 7, description = "Check that Different Elements Page contains proper logs")
     public void assertLogsEqualExpected() {
         Set<String> expectedLogs = expectedLogsAccumulator.getLogs();
         assertionStep.logsOnDifferentElementsPageEqualExpected(expectedLogs);
@@ -65,14 +68,14 @@ public class DifferentElementsFailTest extends AbstractSeleniumTest {
     }
 
     @DataProvider
-    public Object[][] selectedRadioButtonData() {
+    public Object[][] selectedRadioButtonInvalidData() {
         return new Object[][]{
             {"Aluminum"}
         };
     }
 
     @DataProvider
-    public Object[][] selectedDropdownMenuItemData() {
+    public Object[][] selectedDropdownMenuItemInvalidData() {
         return new Object[][]{
             {"Purple"}
         };

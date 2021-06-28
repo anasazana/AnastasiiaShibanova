@@ -8,7 +8,8 @@ import ru.training.at.hw4.tests.AbstractSeleniumTest;
 public class HomePageTest extends AbstractSeleniumTest {
 
     // 5. Assert that there are 4 items on the header section are displayed and they have proper texts
-    @Test(priority = 3)
+    @Test(priority = 3,
+          description = "Check that there are 4 items on the header section are displayed and they have proper texts")
     public void headerSectionItemsAreDisplayedAndHaveProperTexts() {
         assertionStep.numberOfItemsInHeaderSectionOnHomePage();
         assertionStep.allItemsInHeaderSectionOnHomePageAreDisplayed();
@@ -16,14 +17,15 @@ public class HomePageTest extends AbstractSeleniumTest {
     }
 
     // 6. Assert that there are 4 images on the Index Page and they are displayed
-    @Test(priority = 4)
+    @Test(priority = 4, description = "Check that there are 4 images on the Index Page and they are displayed")
     public void homePageContainsProperNumberOfImagesAndTheyAreDisplayed() {
         assertionStep.homePageContainsImagesAndTheyAreDisplayed();
         assertionStep.homePageContainsProperNumberOfImages();
     }
 
     // 7. Assert that there are 4 texts on the Index Page under icons and they have proper text
-    @Test(priority = 5)
+    @Test(priority = 5,
+          description = "Check that there are 4 texts on the Index Page under icons and they have proper text")
     public void homePageContainsProperNumberOfTextsDisplayedAndTheyHaveProperValues() {
         assertionStep.homePageContainsTextsAndTheyAreDisplayed();
         assertionStep.homePageContainsProperNumberOfTexts();
@@ -32,7 +34,7 @@ public class HomePageTest extends AbstractSeleniumTest {
 
     // 8. Assert that there is the iframe with “Frame Button” exist
     // 9. Switch to the iframe and check that there is “Frame Button” in the iframe
-    @Test(priority = 6)
+    @Test(priority = 6, description = "Check that Home Page contains IFrame with 'Frame Button' in it")
     public void iframeExistsAndContainsFrameButton() {
         assertionStep.homePageContainsIFrame();
         actionStep.switchToIframeOnHomePage();
@@ -42,7 +44,8 @@ public class HomePageTest extends AbstractSeleniumTest {
     // 10. Switch to original window back
     // 11. Assert that there are 5 items in the Left Section are displayed and they have proper text
 
-    @Test(priority = 7)
+    @Test(priority = 7,
+          description = "Check that there are 5 items in the Left Section are displayed and they have proper text")
     public void leftSideSectionItemsAreDisplayedAndHaveProperTexts() {
         actionStep.switchToHomePage();
         assertionStep.checkAllItemsInLeftSideSectionOnHomePageAreDisplayed();
