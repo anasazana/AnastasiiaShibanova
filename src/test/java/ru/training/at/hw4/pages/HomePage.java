@@ -1,15 +1,16 @@
-package ru.training.at.hw3.pages;
+package ru.training.at.hw4.pages;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import ru.training.at.hw3.pages.components.HeaderSectionMenu;
-import ru.training.at.hw3.pages.components.LeftSideSectionMenu;
+import ru.training.at.hw4.pages.components.HeaderSectionMenu;
+import ru.training.at.hw4.pages.components.LeftSideSectionMenu;
 
-public class HomePage {
+public class HomePage extends AbstractPage {
+
+    private final String homePageURL = "index.html";
 
     private final HeaderSectionMenu headerSectionMenu;
 
@@ -43,7 +44,8 @@ public class HomePage {
     private List<WebElement> homePageTexts;
 
     public HomePage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+        super(driver);
+        pageUrl = "index.html";
         headerSectionMenu = new HeaderSectionMenu(driver);
         leftSideSectionMenu = new LeftSideSectionMenu(driver);
     }
@@ -106,8 +108,8 @@ public class HomePage {
 
     public List<String> getHomePageTextsValues() {
         return homePageTexts.stream()
-                            .map(WebElement::getText)
-                            .collect(Collectors.toList());
+            .map(WebElement::getText)
+            .collect(Collectors.toList());
     }
 
 

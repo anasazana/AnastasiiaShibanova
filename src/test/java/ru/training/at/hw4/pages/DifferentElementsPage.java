@@ -1,4 +1,4 @@
-package ru.training.at.hw3.pages;
+package ru.training.at.hw4.pages;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,12 +6,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import ru.training.at.hw3.pages.components.HeaderSectionMenu;
-import ru.training.at.hw3.pages.components.LeftSideSectionMenu;
-import ru.training.at.hw3.pages.components.RightSideSectionMenu;
+import ru.training.at.hw4.pages.components.HeaderSectionMenu;
+import ru.training.at.hw4.pages.components.LeftSideSectionMenu;
+import ru.training.at.hw4.pages.components.RightSideSectionMenu;
 
-public class DifferentElementsPage {
+public class DifferentElementsPage extends AbstractPage {
+
+    private final String differentElementsPageURL = "different-elements.html";
 
     private final HeaderSectionMenu headerSectionMenu;
 
@@ -32,7 +33,8 @@ public class DifferentElementsPage {
     private List<WebElement> colorOptions;
 
     public DifferentElementsPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+        super(driver);
+        pageUrl = differentElementsPageURL;
         headerSectionMenu = new HeaderSectionMenu(driver);
         leftSideSectionMenu = new LeftSideSectionMenu(driver);
         rightSideSectionMenu = new RightSideSectionMenu(driver);
@@ -102,8 +104,8 @@ public class DifferentElementsPage {
 
     public WebElement selectColor(String color) {
         Optional<WebElement> selectedColorOptional = colorOptions.stream()
-                                                                 .filter(checkBox -> checkBox.getText().contains(color))
-                                                                 .findFirst();
+            .filter(checkBox -> checkBox.getText().contains(color))
+            .findFirst();
         if (selectedColorOptional.isPresent()) {
             WebElement selectedColor = selectedColorOptional.get();
             selectedColor.click();

@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="SeleniumRefactoredSuite">
+<suite name="SeleniumHW3Suite">
   <test name="SeleniumTests">
     <classes>
       <class name="ru.training.at.hw3.tests.ex1.HomePageTest"/>
