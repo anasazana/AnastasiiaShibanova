@@ -186,6 +186,7 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>${maven-surefire-plugin.version}</version>
             <configuration>
+              <testFailureIgnore>true</testFailureIgnore>
               <suiteXmlFiles>${project.basedir}/src/test/resources/testngConfigs/hw4.xml</suiteXmlFiles>
             </configuration>
           </plugin>
