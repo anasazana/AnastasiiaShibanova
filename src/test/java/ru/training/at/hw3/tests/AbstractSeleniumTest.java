@@ -19,7 +19,6 @@ public abstract class AbstractSeleniumTest {
     protected SoftAssert assertCollector;
     protected HomePage homePage;
     protected Properties properties;
-    private String homePageURL;
 
     @BeforeClass
     protected void setUp() {
@@ -32,7 +31,6 @@ public abstract class AbstractSeleniumTest {
             properties = new Properties();
             String projectPath = System.getProperty("user.dir");
             properties.load(new FileInputStream(projectPath + "/src/test/resources/config.properties"));
-            homePageURL = properties.getProperty("homePageUrl");
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
@@ -42,8 +40,9 @@ public abstract class AbstractSeleniumTest {
     @Test(priority = 1)
     protected void homePageHasProperTitle() {
         // 1. Open test site by URL
-        webDriver.navigate().to(homePageURL);
         homePage = new HomePage(webDriver);
+        webDriver.get(properties.getProperty("homePageURL"));
+
 
         // 2. Assert Browser title
         String actualTitle = webDriver.getTitle();

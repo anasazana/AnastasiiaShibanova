@@ -2,3 +2,5 @@ target
 *.iml
 .idea
 /chromedriver
+**/allure-results
+**/.allure

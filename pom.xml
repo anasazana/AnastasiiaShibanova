@@ -23,9 +23,18 @@
     <testng.version>7.4.0</testng.version>
     <assertj-core.version>3.20.1</assertj-core.version>
     <calculator.version>1.0</calculator.version>
+    <allure-testng.version>2.14.0</allure-testng.version>
+    <allure-maven.version>2.10.0</allure-maven.version>
+    <aspectj.version>1.9.6</aspectj.version>
   </properties>
 
   <dependencies>
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-testng</artifactId>
+      <version>${allure-testng.version}</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
@@ -103,6 +112,25 @@
         <version>${maven-surefire-plugin.version}</version>
         <configuration>
           <suiteXmlFiles>${project.basedir}/src/test/resources/testngConfigs/sumSubTests.xml</suiteXmlFiles>
+          <argLine>
+            -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+          </argLine>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>${allure-maven.version}</version>
+        <configuration>
+          <propertiesFilePath>${project.basedir}/test/resources/allure.properties</propertiesFilePath>
+          <outputDirectory>${project.basedir}/target/allure-results</outputDirectory>
         </configuration>
       </plugin>
     </plugins>
@@ -135,6 +163,31 @@
             <version>${maven-surefire-plugin.version}</version>
             <configuration>
               <suiteXmlFiles>${project.basedir}/src/test/resources/testngConfigs/hw3.xml</suiteXmlFiles>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>hw4</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-maven</artifactId>
+            <version>${allure-maven.version}</version>
+            <configuration>
+              <propertiesFilePath>${project.basedir}/test/resources/allure.properties</propertiesFilePath>
+            </configuration>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>${maven-surefire-plugin.version}</version>
+            <configuration>
+              <testFailureIgnore>true</testFailureIgnore>
+              <suiteXmlFiles>${project.basedir}/src/test/resources/testngConfigs/hw4.xml</suiteXmlFiles>
             </configuration>
           </plugin>
         </plugins>
@@ -189,4 +242,20 @@
       </build>
     </profile>
   </profiles>
+
+  <reporting>
+    <excludeDefaults>true</excludeDefaults>
+    <plugins>
+      <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>${allure-maven.version}</version>
+
+        <configuration>
+          <reportVersion>${allure-testng.version}</reportVersion>
+          <outputDirectory>${project.basedir}/target/allure-reports</outputDirectory>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
 </project>

@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="SeleniumHW4Suite">
+  <listeners>
+    <listener class-name="ru.training.at.hw4.listeners.AllureListener"/>
+  </listeners>
+  <test name="SeleniumTests">
+    <classes>
+      <class name="ru.training.at.hw4.tests.passing.ex1.HomePageTest"/>
+      <class name="ru.training.at.hw4.tests.passing.ex2.DifferentElementsTest"/>
+      <class name="ru.training.at.hw4.tests.failing.DifferentElementsFailTest"/>
+    </classes>
+  </test>
+</suite>
