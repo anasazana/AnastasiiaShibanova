@@ -1,14 +1,17 @@
 package ru.training.at.hw5.pages.components;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import ru.training.at.hw5.data.UserTableRow;
-
-import java.util.*;
-import java.util.stream.Collectors;
 
 public class UserTable {
 

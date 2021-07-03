@@ -1,15 +1,17 @@
 package ru.training.at.hw5.steps;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import org.openqa.selenium.WebElement;
 import ru.training.at.hw5.data.ExpectedValues;
 import ru.training.at.hw5.data.UserTableRow;
-
-import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ThenStep extends AbstractStep {
 

@@ -39,6 +39,8 @@ public class UserTablePage extends AbstractPage {
         return rightSideSection;
     }
 
-    public UserTable getUserTable() { return userTable; }
+    public UserTable getUserTable() {
+        return userTable;
+    }
 
 }

@@ -1,11 +1,9 @@
 package ru.training.at.hw5.data;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.openqa.selenium.WebElement;
 
 public class UserTableRow {
 
@@ -84,7 +82,7 @@ public class UserTableRow {
         return typeDropdown.isDisplayed();
     }
 
-    public boolean vipCheckBoxIsDisplayed() {return vipCheckBox.isDisplayed(); }
-
-
+    public boolean vipCheckBoxIsDisplayed() {
+        return vipCheckBox.isDisplayed();
+    }
 }
