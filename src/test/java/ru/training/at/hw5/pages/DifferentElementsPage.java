@@ -1,25 +1,24 @@
-package ru.training.at.hw4.pages;
+package ru.training.at.hw5.pages;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import ru.training.at.hw4.pages.components.HeaderSectionMenu;
-import ru.training.at.hw4.pages.components.LeftSideSectionMenu;
-import ru.training.at.hw4.pages.components.RightSideSectionMenu;
+import ru.training.at.hw5.pages.components.HeaderSectionMenu;
+import ru.training.at.hw5.pages.components.LeftSideSectionMenu;
+import ru.training.at.hw5.pages.components.RightSideSection;
 
 public class DifferentElementsPage extends AbstractPage {
 
-    private final String differentElementsPageURL = "different-elements.html";
+    private final String differentElementsPageURL = "different-elements";
 
     private final HeaderSectionMenu headerSectionMenu;
 
     private final LeftSideSectionMenu leftSideSectionMenu;
 
-    private final RightSideSectionMenu rightSideSectionMenu;
+    private final RightSideSection rightSideSection;
 
     @FindBy(css = "label[class=label-checkbox]")
     private List<WebElement> elementCheckBoxes;
@@ -38,7 +37,7 @@ public class DifferentElementsPage extends AbstractPage {
         pageUrl = differentElementsPageURL;
         headerSectionMenu = new HeaderSectionMenu(driver);
         leftSideSectionMenu = new LeftSideSectionMenu(driver);
-        rightSideSectionMenu = new RightSideSectionMenu(driver);
+        rightSideSection = new RightSideSection(driver);
     }
 
     public HeaderSectionMenu getHeaderSectionMenu() {
@@ -49,8 +48,8 @@ public class DifferentElementsPage extends AbstractPage {
         return leftSideSectionMenu;
     }
 
-    public RightSideSectionMenu getRightSideSectionMenu() {
-        return rightSideSectionMenu;
+    public RightSideSection getRightSideSection() {
+        return rightSideSection;
     }
 
     public int getNumberOfElements() {
