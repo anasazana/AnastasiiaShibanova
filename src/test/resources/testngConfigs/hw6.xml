@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="SeleniumHW6Suite">
+  <listeners>
+    <listener class-name="ru.training.at.hw6.listeners.AllureListener"/>
+  </listeners>
+  <test name="SeleniumTests">
+    <classes>
+      <class name="ru.training.at.hw6.tests.ex1.HomePageTest"/>
+      <class name="ru.training.at.hw6.tests.ex2.DifferentElementsTest"/>
+    </classes>
+  </test>
+</suite>
