@@ -1,33 +1,35 @@
 package ru.training.at.hw6.tests;
 
 import java.io.FileInputStream;
+import java.util.Objects;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import ru.training.at.hw6.data.ExpectedValues;
-import ru.training.at.hw6.drivers.WebDriverSingleton;
+import ru.training.at.hw6.drivers.WebDriverFactory;
 import ru.training.at.hw6.steps.ActionStep;
 import ru.training.at.hw6.steps.AssertionStep;
 
 public abstract class AbstractSeleniumTest {
 
-    protected WebDriver driver;
+    protected ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     protected Properties properties;
     protected ActionStep actionStep;
     protected AssertionStep assertionStep;
 
     @BeforeClass
-    protected void setUp(ITestContext testContext) {
-        driver = WebDriverSingleton.getDriver();
+    @Parameters(value = {"browser", "type"})
+    protected void setUp(String browser, String type, ITestContext testContext) {
+        driver.set(WebDriverFactory.createWebDriver(type, browser));
         testContext.setAttribute("driver", driver);
-        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-
-        actionStep = new ActionStep(driver);
-        assertionStep = new AssertionStep(driver);
+        driver.get().manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        actionStep = new ActionStep(driver.get());
+        assertionStep = new AssertionStep(driver.get());
         try {
             properties = new Properties();
             String projectPath = System.getProperty("user.dir");
@@ -56,9 +58,9 @@ public abstract class AbstractSeleniumTest {
 
     @AfterClass
     protected void tearDown(ITestContext testContext) {
-        if (driver != null) {
-            WebDriverSingleton.closeDriver();
-            testContext.setAttribute("driver", null);
+        if (!Objects.isNull(driver.get())) {
+            driver.get().quit();
+            driver.remove();
         }
     }
 }

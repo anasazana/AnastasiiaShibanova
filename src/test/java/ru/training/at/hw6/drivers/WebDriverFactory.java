@@ -1,6 +1,7 @@
 package ru.training.at.hw6.drivers;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.github.bonigarcia.wdm.managers.FirefoxDriverManager;
 import java.net.MalformedURLException;
 import java.net.URL;
 import org.openqa.selenium.Capabilities;
@@ -12,7 +13,6 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.safari.SafariOptions;
 
 public class WebDriverFactory {
 
@@ -31,7 +31,7 @@ public class WebDriverFactory {
         WebDriver driver;
         switch (browserName.toUpperCase()) {
             case FIREFOX:
-                WebDriverManager.firefoxdriver().setup();
+                FirefoxDriverManager.firefoxdriver().setup();
                 driver = createFirefox();
                 break;
             case CHROME:
@@ -69,14 +69,12 @@ public class WebDriverFactory {
             capabilities = createChromeCapabilities();
         } else if (browserName.equalsIgnoreCase(FIREFOX)) {
             capabilities = createFirefoxCapabilities();
-        } else if (browserName.equalsIgnoreCase(SAFARI)) {
-            capabilities = createSafariCapabilities();
         } else {
             throw new IllegalArgumentException(String.format("Unsupported browser: %s."
             + "Supported browsers are chrome and safari.", browserName));
         }
         try {
-            return new RemoteWebDriver(new URL("http://localhost:4445/wd/hub"), capabilities);
+            return new RemoteWebDriver(new URL("http://192.168.1.44:4444/wd/hub"), capabilities);
         } catch (MalformedURLException e) {
             throw new RuntimeException("Malformed URL");
         }
@@ -84,10 +82,6 @@ public class WebDriverFactory {
 
     private static Capabilities createFirefoxCapabilities() {
         return new FirefoxOptions();
-    }
-
-    private static Capabilities createSafariCapabilities() {
-        return new SafariOptions();
     }
 
     private static Capabilities createChromeCapabilities() {
