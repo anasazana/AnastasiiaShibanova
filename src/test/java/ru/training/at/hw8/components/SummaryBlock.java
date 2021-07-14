@@ -11,9 +11,9 @@ import org.openqa.selenium.By;
 @UI("#summary-block")
 public class SummaryBlock extends Section {
 
-    @UI("#odds-selector p") private WebList oddsRadio;
-    @UI("#even-selector p") private WebList evenRadio;
-    @UI("#calculate-button") private Button calculate;
+    @UI("#odds-selector p") public WebList oddsRadio;
+    @UI("#even-selector p") public WebList evenRadio;
+    @UI("#calculate-button") public Button calculate;
 
     public void calculateSummary(int[] summary) {
         selectRadio(summary);
