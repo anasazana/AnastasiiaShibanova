@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="SeleniumHW5Suite">
+  <test name="SeleniumTests">
+    <packages>
+      <package name="ru.training.at.hw5.tests"/>
+    </packages>
+  </test>
+</suite>

@@ -1,17 +1,18 @@
-package ru.training.at.hw4.tests.failing;
+package ru.training.at.hw6.tests.ex2;
+
 
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import java.util.Set;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import ru.training.at.hw4.data.ExpectedValues;
-import ru.training.at.hw4.tests.AbstractSeleniumTest;
-import ru.training.at.hw4.utils.DifferentElementsLogCreator;
+import ru.training.at.hw6.data.ExpectedValues;
+import ru.training.at.hw6.tests.AbstractSeleniumTest;
+import ru.training.at.hw6.utils.DifferentElementsLogCreator;
 
 @Feature("Different Elements Page contents check")
-@Story("Different Elements Page does not contain incorrect elements")
-public class DifferentElementsFailTest extends AbstractSeleniumTest {
+@Story("Choose different elements")
+public class DifferentElementsTest extends AbstractSeleniumTest {
 
     private final DifferentElementsLogCreator expectedLogsAccumulator = new DifferentElementsLogCreator();
 
@@ -19,14 +20,13 @@ public class DifferentElementsFailTest extends AbstractSeleniumTest {
     @Test(priority = 3, description = "Open through the Home Page header menu Service -> Different Elements Page")
     public void openServiceDifferentElementsPageThroughHeaderMenuAndCheckIfItHasProperTitle() {
         actionStep.clickOnHeaderSectionServiceMenuItem(ExpectedValues.SERVICE_MENU_DIFFERENT_ELEMENTS_BUTTON_VALUE);
-        assertionStep
-            .differentElementsPageHasProperTitle(ExpectedValues.DIFFERENT_ELEMENTS_PAGE_TITLE);
+        assertionStep.differentElementsPageHasProperTitle(ExpectedValues.DIFFERENT_ELEMENTS_PAGE_TITLE);
     }
 
     // 6. Select checkboxes
     @Test(priority = 4, dataProvider = "selectedCheckBoxesData",
           description = "Select valid elements on Different Elements Page")
-    public void selectElementCheckBoxes(String... elementsToSelect) {
+    public void selectElementCheckBoxes(String ... elementsToSelect) {
         actionStep.selectCheckBoxesOnDifferentElementsPage(elementsToSelect);
         for (String elementName : elementsToSelect) {
             expectedLogsAccumulator.addCheckBoxLog(elementName, true);
@@ -34,21 +34,20 @@ public class DifferentElementsFailTest extends AbstractSeleniumTest {
     }
 
     // 7. Select radio
-    @Test(priority = 5, dataProvider = "selectedRadioButtonInvalidData",
-          description = "Select invalid metal on Different Elements Page")
-    public void selectInvalidMetalRadioButton(String metalToSelect) {
+    @Test(priority = 5, dataProvider = "selectedRadioButtonData",
+          description = "Select valid metal on Different Elements Page")
+    public void selectMetalRadioButton(String metalToSelect) {
         actionStep.selectMetalRadioButtonOnDifferentElementsPage(metalToSelect);
         expectedLogsAccumulator.addRadioButtonLog(metalToSelect);
     }
 
     // 8. Select in dropdown
-    @Test(priority = 6, dataProvider = "selectedDropdownMenuItemInvalidData",
-          description = "Select invalid color on Different Elements Page")
-    public void selectInvalidColorDropdownMenuItem(String colorToSelect) {
+    @Test(priority = 6, dataProvider = "selectedDropdownMenuItemData",
+          description = "Select valid color on Different Elements Page")
+    public void selectColorDropdownMenuItem(String colorToSelect) {
         actionStep.openColorDropdownMenuOnDifferentElementsPage();
         actionStep.selectColorOnDifferentElementsPage(colorToSelect);
         expectedLogsAccumulator.addDropdownItemLog(colorToSelect);
-
     }
 
     // 9. Assert that
@@ -63,22 +62,22 @@ public class DifferentElementsFailTest extends AbstractSeleniumTest {
 
     @DataProvider
     public Object[][] selectedCheckBoxesData() {
-        return new Object[][] {
+        return new Object[][]{
             {"Wind", "Water"}
         };
     }
 
     @DataProvider
-    public Object[][] selectedRadioButtonInvalidData() {
-        return new Object[][] {
-            {"Aluminum"}
+    public Object[][] selectedRadioButtonData() {
+        return new Object[][]{
+            {"Selen"}
         };
     }
 
     @DataProvider
-    public Object[][] selectedDropdownMenuItemInvalidData() {
-        return new Object[][] {
-            {"Purple"}
+    public Object[][] selectedDropdownMenuItemData() {
+        return new Object[][]{
+            {"Yellow"}
         };
     }
     // 10. Close Browser

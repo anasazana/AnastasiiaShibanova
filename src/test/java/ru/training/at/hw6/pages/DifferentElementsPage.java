@@ -1,15 +1,14 @@
-package ru.training.at.hw4.pages;
+package ru.training.at.hw6.pages;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import ru.training.at.hw4.pages.components.HeaderSectionMenu;
-import ru.training.at.hw4.pages.components.LeftSideSectionMenu;
-import ru.training.at.hw4.pages.components.RightSideSectionMenu;
+import ru.training.at.hw6.pages.components.HeaderSectionMenu;
+import ru.training.at.hw6.pages.components.LeftSideSectionMenu;
+import ru.training.at.hw6.pages.components.RightSideSectionMenu;
 
 public class DifferentElementsPage extends AbstractPage {
 
