@@ -3,14 +3,12 @@ package ru.training.at.hw4.tests.passing.ex2;
 
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import java.util.NoSuchElementException;
 import java.util.Set;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.training.at.hw4.data.ExpectedValues;
 import ru.training.at.hw4.tests.AbstractSeleniumTest;
 import ru.training.at.hw4.utils.DifferentElementsLogCreator;
-import sun.jvm.hotspot.utilities.AssertionFailure;
 
 @Feature("Different Elements Page contents check")
 @Story("Choose different elements")
