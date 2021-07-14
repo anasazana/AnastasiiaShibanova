@@ -36,7 +36,7 @@ public class JdiSiteTest implements TestInit {
     public void metalsAndColorsFormTest(MetalsAndColorsData testData) {
         SiteJdi.loginAsDefaultUser();
         SiteJdi.navigateThroughHeaderMenu(MetalsAndColors);
-        metalsAndColorsPage.shouldBeOpened();
+        assertThat(metalsAndColorsPage.isOpened());
         metalsAndColorsPage.fillMetalsAndColorsForm(testData);
         metalsAndColorsPage.submitMetalsAndColorsForm();
         assertThat(metalsAndColorsPage.actualResultEqualsExpected(testData));

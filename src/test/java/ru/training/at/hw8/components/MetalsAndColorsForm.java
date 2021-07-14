@@ -38,7 +38,6 @@ public class MetalsAndColorsForm extends Section {
     @UI("#submit-button") public Button submit;
 
     public void fill(MetalsAndColorsData data) {
-        summaryBlock.hover();
         summaryBlock.calculateSummary(data.getSummary());
         selectElements(data.getElements());
         colors.select(data.getColor().name());
