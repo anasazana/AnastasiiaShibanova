@@ -2,12 +2,18 @@ package ru.training.at.hw8.test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static ru.training.at.hw8.components.enums.HeaderMenuItem.MetalsAndColors;
-import static ru.training.at.hw8.site.SiteJdi.*;
+import static ru.training.at.hw8.site.SiteJdi.homePage;
+import static ru.training.at.hw8.site.SiteJdi.metalsAndColorsPage;
 
-import java.io.*;
-import org.testng.annotations.*;
+import java.io.IOException;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 import ru.training.at.hw8.data.DataParser;
 import ru.training.at.hw8.data.entities.MetalsAndColorsData;
+import ru.training.at.hw8.site.SiteJdi;
+
 
 public class JdiSiteTest implements TestInit {
 
@@ -18,7 +24,7 @@ public class JdiSiteTest implements TestInit {
 
     @AfterMethod
     public void tearDown() {
-        shouldBeLoggedOut();
+        SiteJdi.shouldBeLoggedOut();
     }
 
     @DataProvider
@@ -28,11 +34,12 @@ public class JdiSiteTest implements TestInit {
 
     @Test(dataProvider = "metalsAndColorsFormTestData")
     public void metalsAndColorsFormTest(MetalsAndColorsData testData) {
-        loginAsDefaultUser();
-        navigateThroughHeaderMenu(MetalsAndColors);
+        SiteJdi.loginAsDefaultUser();
+        SiteJdi.navigateThroughHeaderMenu(MetalsAndColors);
         metalsAndColorsPage.shouldBeOpened();
         metalsAndColorsPage.fillMetalsAndColorsForm(testData);
         metalsAndColorsPage.submitMetalsAndColorsForm();
         assertThat(metalsAndColorsPage.actualResultEqualsExpected(testData));
     }
+
 }
