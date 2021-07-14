@@ -34,51 +34,51 @@ public class ThenStep extends AbstractStep {
     @Then("{int} Numbers should be displayed in Users Table on User Table Page")
     public void thereIsProperNumberOfNumbersDisplayedInUserTableOnUserTablePage(int numberOfNumbers) {
         Map<String, UserTableRow> mapOfUsers = userTablePage.getUserTable().getUserTableRows();
+        assertThat("There should be " + numberOfNumbers + " numbers displayed in user table",
+                mapOfUsers.size() == numberOfNumbers);
         for (UserTableRow user : mapOfUsers.values()) {
             assertThat("All numbers should be displayed in user table", user.numberIsDisplayed());
         }
-        assertThat("There should be " + numberOfNumbers + " numbers displayed in user table",
-                mapOfUsers.size() == numberOfNumbers);
     }
 
     @Then("{int} Type Dropdowns should be displayed in Users Table on User Table Page")
     public void thereIsProperNumberOfTypeDropdownsDisplayedInUserTableOnUserTablePage(int numberOfDropdowns) {
         Map<String, UserTableRow> mapOfUsers = userTablePage.getUserTable().getUserTableRows();
+        assertThat("There should be " + numberOfDropdowns + " dropdowns displayed in user table",
+                mapOfUsers.size() == numberOfDropdowns);
         for (UserTableRow user : mapOfUsers.values()) {
             assertThat("All type dropdowns should be displayed in user table", user.typeDropdownIsDisplayed());
         }
-        assertThat("There should be " + numberOfDropdowns + " dropdowns displayed in user table",
-                mapOfUsers.size() == numberOfDropdowns);
     }
 
     @Then("{int} Usernames should be displayed in Users Table on User Table Page")
     public void thereIsProperNumberOfUsernamesDisplayedInUserTableOnUserTablePage(int numberOfUsernames) {
         Map<String, UserTableRow> mapOfUsers = userTablePage.getUserTable().getUserTableRows();
+        assertThat("There should be " + numberOfUsernames + " usernames displayed in user table",
+                mapOfUsers.size() == numberOfUsernames);
         for (UserTableRow user : mapOfUsers.values()) {
             assertThat("All usernames should be displayed in user table", user.nameIsDisplayed());
         }
-        assertThat("There should be " + numberOfUsernames + " usernames displayed in user table",
-                mapOfUsers.size() == numberOfUsernames);
     }
 
     @Then("{int} Description texts under images should be displayed in Users Table on User Table Page")
     public void thereIsProperNumberOfDescriptionsDisplayedInUserTableOnUserTablePage(int numberOfDescriptions) {
         Map<String, UserTableRow> mapOfUsers = userTablePage.getUserTable().getUserTableRows();
+        assertThat("There should be " + numberOfDescriptions + " descriptions displayed in user table",
+                mapOfUsers.size() == numberOfDescriptions);
         for (UserTableRow user : mapOfUsers.values()) {
             assertThat("All descriptions should be displayed in user table", user.descriptionIsDisplayed());
         }
-        assertThat("There should be " + numberOfDescriptions + " descriptions displayed in user table",
-                mapOfUsers.size() == numberOfDescriptions);
     }
 
     @Then("{int} checkboxes should be displayed in Users Table on User Table Page")
     public void thereIsProperNumberOfCheckboxesDisplayedInUserTableOnUserTablePage(int numberOfCheckboxes) {
         Map<String, UserTableRow> mapOfUsers = userTablePage.getUserTable().getUserTableRows();
+        assertThat("There should be " + numberOfCheckboxes + " checkboxes displayed in user table",
+                mapOfUsers.size() == numberOfCheckboxes);
         for (UserTableRow user : mapOfUsers.values()) {
             assertThat("All checkboxes should be displayed in user table", user.vipCheckBoxIsDisplayed());
         }
-        assertThat("There should be " + numberOfCheckboxes + " checkboxes displayed in user table",
-                mapOfUsers.size() == numberOfCheckboxes);
     }
 
     @Then("User table should contain following values:")
@@ -97,10 +97,8 @@ public class ThenStep extends AbstractStep {
                 .sorted(Comparator.comparingInt(n -> Integer.parseInt(n.get(0))))
                 .collect(Collectors.toList());
         for (int i = 0; i < expectedData.size() - 1; i++) {
-            for (int j = 0; j < 3; j++) {
-                assertThat("User table should contain expected values",
-                        expectedData.get(i + 1).get(j).equals(actualData.get(i).get(j)));
-            }
+            assertThat("User table should contain expected values",
+                    expectedData.get(i + 1).equals(actualData.get(i)));
         }
     }
 

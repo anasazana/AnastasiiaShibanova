@@ -27,10 +27,10 @@ public class UserTable {
 
     public UserTable(WebDriver driver) {
         PageFactory.initElements(driver, this);
-        createUsers();
+        readUserTableRows();
     }
 
-    private void createUsers() {
+    private void readUserTableRows() {
         tableRows.forEach(row -> {
             List<WebElement> rowElements = row.findElements(By.cssSelector("td"));
 

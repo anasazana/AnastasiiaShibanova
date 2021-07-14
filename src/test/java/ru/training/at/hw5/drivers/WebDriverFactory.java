@@ -1,6 +1,5 @@
 package ru.training.at.hw5.drivers;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -21,12 +20,10 @@ public class WebDriverFactory {
             case FIREFOX:
                 driver = createFirefox();
                 break;
-            case CHROME:
-                driver = createChrome();
-                break;
             case OPERA:
                 driver = createOpera();
                 break;
+            case CHROME:
             default:
                 driver = createChrome();
                 break;

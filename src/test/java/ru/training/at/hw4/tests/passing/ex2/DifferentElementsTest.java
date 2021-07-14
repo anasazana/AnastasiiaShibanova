@@ -3,7 +3,6 @@ package ru.training.at.hw4.tests.passing.ex2;
 
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import java.util.NoSuchElementException;
 import java.util.Set;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
