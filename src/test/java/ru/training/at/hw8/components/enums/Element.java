@@ -1,11 +1,17 @@
 package ru.training.at.hw8.components.enums;
 
+import com.google.gson.annotations.SerializedName;
+
 public enum Element {
 
-    Water(1),
-    Earth(2),
-    Wind(3),
-    Fire(4);
+    @SerializedName("Water")
+    WATER(1),
+    @SerializedName("Earth")
+    EARTH(2),
+    @SerializedName("Wind")
+    WIND(3),
+    @SerializedName("Fire")
+    FIRE(4);
 
     private final int index;
 
@@ -16,4 +22,5 @@ public enum Element {
     public int index() {
         return index;
     }
+
 }

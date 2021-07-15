@@ -1,6 +1,7 @@
 package ru.training.at.hw8.components.enums;
 
 public enum HeaderMenuItem {
+
     Home("Home"),
     ContactForm("Contact Form"),
     Service("Service"),

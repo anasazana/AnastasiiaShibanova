@@ -2,13 +2,11 @@ package ru.training.at.hw8.pages;
 
 import com.epam.jdi.light.elements.common.UIElement;
 import com.epam.jdi.light.elements.complex.WebList;
-import com.epam.jdi.light.elements.composite.WebPage;
 import com.epam.jdi.light.elements.pageobjects.annotations.Title;
 import com.epam.jdi.light.elements.pageobjects.annotations.Url;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
 import java.util.List;
 import java.util.stream.Collectors;
-import ru.training.at.hw8.components.HeaderSection;
 import ru.training.at.hw8.components.MetalsAndColorsForm;
 import ru.training.at.hw8.data.entities.MetalsAndColorsData;
 

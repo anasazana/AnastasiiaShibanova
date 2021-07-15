@@ -1,6 +1,6 @@
 package ru.training.at.hw8.components;
 
-import static ru.training.at.hw8.components.enums.Vegetable.Vegetables;
+import static ru.training.at.hw8.components.enums.Vegetable.VEGETABLES;
 
 import com.epam.jdi.light.elements.complex.Checklist;
 import com.epam.jdi.light.elements.complex.dropdown.Dropdown;
@@ -46,7 +46,7 @@ public class MetalsAndColorsForm extends Section {
     }
 
     private void selectVegetables(Vegetable[] vegetablesToSelect) {
-        vegetables.select(Vegetables.name());
+        vegetables.select(VEGETABLES.name());
         for (Vegetable vegetable : vegetablesToSelect) {
             vegetables.select(vegetable.name());
         }

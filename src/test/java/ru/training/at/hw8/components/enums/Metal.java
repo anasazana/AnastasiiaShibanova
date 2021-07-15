@@ -1,12 +1,19 @@
 package ru.training.at.hw8.components.enums;
 
+import com.google.gson.annotations.SerializedName;
+
 public enum Metal {
 
-    Metals(0),
-    Gold(1),
-    Silver(2),
-    Bronze(3),
-    Selen(4);
+    @SerializedName("Metals")
+    METALS(0),
+    @SerializedName("Gold")
+    GOLD(1),
+    @SerializedName("Silver")
+    SILVER(2),
+    @SerializedName("Bronze")
+    BRONZE(3),
+    @SerializedName("Selen")
+    SELEN(4);
 
     private final int index;
 
