@@ -12,10 +12,11 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.training.at.hw8.data.DataParser;
 import ru.training.at.hw8.data.entities.MetalsAndColorsData;
+import ru.training.at.hw8.data.entities.User;
 import ru.training.at.hw8.site.SiteJdi;
 
 
-public class JdiSiteTest implements TestInit {
+public class JdiMetalsAndColorsPageTest implements TestInit {
 
     @BeforeMethod
     public void setUp() {
@@ -24,7 +25,7 @@ public class JdiSiteTest implements TestInit {
 
     @AfterMethod
     public void tearDown() {
-        SiteJdi.shouldBeLoggedOut();
+        SiteJdi.shouldBeLoggedOut(metalsAndColorsPage);
     }
 
     @DataProvider
@@ -35,7 +36,8 @@ public class JdiSiteTest implements TestInit {
     @Test(dataProvider = "metalsAndColorsFormTestData")
     public void metalsAndColorsFormTest(MetalsAndColorsData testData) {
         SiteJdi.loginAsDefaultUser();
-        SiteJdi.navigateThroughHeaderMenu(MetalsAndColors);
+        homePage.isUserLoggedIn(User.DEFAULT_USER);
+        homePage.navigateThroughHeaderMenu(MetalsAndColors);
         assertThat(metalsAndColorsPage.isOpened());
         metalsAndColorsPage.fillMetalsAndColorsForm(testData);
         metalsAndColorsPage.submitMetalsAndColorsForm();

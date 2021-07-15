@@ -24,11 +24,15 @@ public class HeaderSection extends Section {
         userSection.logout();
     }
 
-    public boolean userIsLoggedIn(User user) {
-        if (userSection.userNameIsDisplayed()) {
+    public boolean isUserLoggedIn(User user) {
+        if (userSection.isUserNameDisplayed()) {
             return userSection.getUserName().equalsIgnoreCase(user.fullName);
         }
         return false;
+    }
+
+    public boolean isLoggedIn() {
+        return userSection.isUserNameDisplayed();
     }
 
 }

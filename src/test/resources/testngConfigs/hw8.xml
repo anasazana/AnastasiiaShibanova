@@ -3,7 +3,7 @@
 <suite name="JdiHW8Suite">
     <test name="JdiTests">
         <classes>
-            <class name="ru.training.at.hw8.test.JdiSiteTest"/>
+            <class name="ru.training.at.hw8.test.JdiMetalsAndColorsPageTest"/>
         </classes>
     </test>
 </suite>

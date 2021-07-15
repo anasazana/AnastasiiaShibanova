@@ -11,7 +11,6 @@ public interface TestInit {
 
     @BeforeSuite(alwaysRun = true)
     static void setUp() {
-        killAllSeleniumDrivers();
         initElements(SiteJdi.class);
     }
 

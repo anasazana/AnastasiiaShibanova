@@ -3,11 +3,11 @@ package ru.training.at.hw8.data;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
-import java.util.HashMap;
 import java.util.Map;
 import ru.training.at.hw8.data.entities.MetalsAndColorsData;
 
@@ -15,7 +15,13 @@ public class DataParser {
 
     public static Object[][] getMetalsAndColorsTestData() throws IOException {
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        InputStream is = classloader.getResourceAsStream("JDI_ex8_metalsColorsDataSet.json");
+        String testDataPath = System.getProperty("test.data");
+        InputStream is = testDataPath == null
+                ? classloader.getResourceAsStream("JDI_ex8_metalsColorsDataSet.json")
+                : new FileInputStream(testDataPath);
+        if (is == null) {
+            throw new IOException("File with test data was not found.");
+        }
         InputStreamReader streamReader = new InputStreamReader(is);
         BufferedReader reader = new BufferedReader(streamReader);
         StringBuilder file = new StringBuilder();

@@ -19,7 +19,7 @@ public class UserSection extends Section {
         return userName.getValue();
     }
 
-    public boolean userNameIsDisplayed() {
+    public boolean isUserNameDisplayed() {
         return userName.isDisplayed();
     }
 
